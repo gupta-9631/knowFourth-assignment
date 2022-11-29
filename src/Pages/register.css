@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.register_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(118, 189, 189);
+    width: 300px;
+    height: 400px;
+    border-radius: 10px;
+
+}
+
+
+.form_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 80%;
+}
+
+.form_container input {
+    padding: 10px;
+    border: none;
+}
