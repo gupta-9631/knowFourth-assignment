@@ -1,8 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Product from "./Product";
 import "./products.css";
-
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 const Products = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  useEffect(() => {}, [products]);
+  // getting data from firestore database
+  const getData = () => {
+    const productsRef = collection(db, "products");
+    getDocs(productsRef)
+      .then((res) => {
+        const product = res.docs.map((doc) => ({
+          data: doc.data(),
+          id: doc.id,
+        }));
+        setProducts(product);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="products_container">
       <div className="left_Menu">
@@ -17,33 +40,9 @@ const Products = () => {
         </div>
       </div>
       <div className="contents">
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {products.map((product) => {
+          return <Product key={product.id} product={product} />;
+        })}
       </div>
     </div>
   );

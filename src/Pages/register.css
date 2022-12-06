@@ -29,3 +29,11 @@
     padding: 10px;
     border: none;
 }
+.err {
+    color: red;
+    text-align: center;
+}
+
+.btn:disabled {
+    background-color: gray !important;
+}

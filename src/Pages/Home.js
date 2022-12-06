@@ -3,10 +3,10 @@ import Navbar from "../components/Navbar";
 import "./home.css";
 import Products from "../components/Products";
 
-const home = () => {
+const home = (props) => {
   return (
     <div className="home_container">
-      <Navbar />
+      <Navbar user={props.name} />
       <Products />
     </div>
   );
